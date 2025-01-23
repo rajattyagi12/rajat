@@ -3,7 +3,7 @@ name: Deploy to AWS EC2
 on:
   push:
     branches:
-      - main  # Triggers the workflow on push to the main branch
+      - master  # Triggers the workflow on push to the main branch
 
 jobs:
   deploy:
@@ -26,8 +26,8 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@35.170.185.200 << 'EOF'
-            # Navigate to your project directory
-            cd /path/to/your/project/directory
+            # Navigate to the /var/www/html directory
+            cd /var/www/html
 
             # Pull the latest changes from the GitHub repository
             git pull origin main
